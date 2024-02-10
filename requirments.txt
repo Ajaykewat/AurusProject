@@ -1,2 +1,19 @@
 
 npm install @react-navigation/native react-native-screens react-native-safe-area-context npm install @react-navigation/native-stack redux react-redux @react-native-async-storage/async-storage react-native-document-picker react-native-image-crop-picker lottie-react-native redux-thunk
+
+
+Enter keystore password: password  
+Re-enter new password: 
+What is your first and last name?
+  [Unknown]:  ajay kewat
+What is the name of your organizational unit?
+  [Unknown]:  self
+What is the name of your organization?
+  [Unknown]:  self
+What is the name of your City or Locality?
+  [Unknown]:  mumbai
+What is the name of your State or Province?
+  [Unknown]:  maharashta
+What is the two-letter country code for this unit?
+  [Unknown]:  in
+Is CN=ajay kewat, OU=self, O=self, L=mumbai, ST=maharashta, C=in correct?
