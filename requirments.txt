@@ -1,0 +1,2 @@
+
+npm install @react-navigation/native react-native-screens react-native-safe-area-context npm install @react-navigation/native-stack redux react-redux @react-native-async-storage/async-storage react-native-document-picker react-native-image-crop-picker lottie-react-native redux-thunk
