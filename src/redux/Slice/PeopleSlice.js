@@ -21,24 +21,16 @@ const PeopleSlice = createSlice({
         image: action.payload.contact,
       })
     },
-    loadPeople(state, action) {
-      return action.payload;
+    updatePersonImage(state, action) {
+      const { person,contact, imagePath } = action.payload;
+      const personToUpdate = state.find(p => p.contact === contact);
+      if (personToUpdate) {
+        personToUpdate.image = imagePath;
+      }
     },
   },
 })
 
-export const { PeopleAdd, PeopleUpdate,loadPeople } = PeopleSlice.actions
-
-export const loadPeopleData = () => async (dispatch) => {
-  try {
-    const jsonValue = await AsyncStorage.getItem('peopleData');
-    if (jsonValue !== null) {
-      const data = JSON.parse(jsonValue);
-      dispatch(loadPeople(data));
-    }
-  } catch (error) {
-    console.error('Error loading people data:', error);
-  }
-};
+export const { PeopleAdd, PeopleUpdate,updatePersonImage } = PeopleSlice.actions
 
 export default PeopleSlice.reducer

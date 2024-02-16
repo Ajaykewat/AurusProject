@@ -8,8 +8,11 @@ import ImagePicker from 'react-native-image-crop-picker';
 import DocumentPicker from 'react-native-document-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ShowMessage } from '../../Helper/ShowMessages';
+import { useDispatch } from 'react-redux';
+import { updatePersonImage } from '../../redux/Slice/PeopleSlice';
 const ViewPeople = ({navigation, route}) => {
   const {person, contact, specialization, image,backgroundColor} = route.params;
+  const dispatch = useDispatch();
 
   const[Img,setImg]=useState("");
   const[message,setmessage]=useState("");
@@ -92,26 +95,14 @@ const HandlePickupDocs = async type => {
 };
 
 const HandleAddImage = async(imagePath)=>{
-try {
-  const storedData = await AsyncStorage.getItem('peopleData');
- 
-let StoredProfiles = JSON.parse(storedData);
-console.log(StoredProfiles);
-
-let findUser = StoredProfiles.filter((item) => {
-  if(item.name == person){
-    item.image = imagePath;
-    return item
+console.log("imagePath",imagePath)
+  try {
+    dispatch(updatePersonImage({ person: person,contact:contact, imagePath: imagePath }));
+    ShowMessage("Image Updated Successfully")
+    navigation.navigate('People');
+  } catch (error) {
+    console.error('Error updating image:', error);
   }
-});
-
-console.log("findUser",findUser)
-   await AsyncStorage.setItem('peopleData', JSON.stringify(StoredProfiles));
-   ShowMessage("Image Updated Successfully")
-   navigation.navigate('People');
-} catch (error) {
-  console.error('Error saving people data:', error);
-}
   setImg(imagePath);
 
 }

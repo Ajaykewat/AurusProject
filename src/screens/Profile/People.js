@@ -8,6 +8,7 @@ import { loadPeopleData } from '../../redux/Slice/PeopleSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ShowMessage } from '../../Helper/ShowMessages';
 import { useFocusEffect } from '@react-navigation/native';
+import { persistor } from '../../redux/store';
 
 const People = ({navigation}) => {
   const dispatch = useDispatch();
@@ -15,15 +16,9 @@ const People = ({navigation}) => {
   const[load,setlaod]=useState(true)
   console.log("peopleData",peopleData)
 
-  useFocusEffect(
-    React.useCallback(() => {
-      dispatch(loadPeopleData());
-    }, [dispatch])
-  );
-
 
   const HandleLogout = async()=>{
-   await AsyncStorage.clear();
+  persistor.purge();
    ShowMessage("Logout Successfully")
    navigation.replace('Register') 
   }

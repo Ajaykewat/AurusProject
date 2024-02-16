@@ -87,20 +87,22 @@ const Register = ({navigation}) => {
 
      dispatch(PeopleAdd(newPeople));
      console.log("newPeople",newPeople);
-
-    try {
-      const storedData = await AsyncStorage.getItem('peopleData');
-      console.log("storedData",storedData);
-      let parsedData = storedData ? JSON.parse(storedData) : [];
-      parsedData.push(newPeople);
-
-      console.log("parsedData",parsedData);
-      await AsyncStorage.setItem('peopleData', JSON.stringify(parsedData));
-      ShowMessage("Data Added Successfully")
+     ShowMessage("Data Added Successfully")
       navigation.navigate('People');
-    } catch (error) {
-      console.error('Error saving people data:', error);
-    }
+
+    // try {
+    //   const storedData = await AsyncStorage.getItem('peopleData');
+    //   console.log("storedData",storedData);
+    //   let parsedData = storedData ? JSON.parse(storedData) : [];
+    //   parsedData.push(newPeople);
+
+    //   console.log("parsedData",parsedData);
+    //   await AsyncStorage.setItem('peopleData', JSON.stringify(parsedData));
+    //   ShowMessage("Data Added Successfully")
+    //   navigation.navigate('People');
+    // } catch (error) {
+    //   console.error('Error saving people data:', error);
+    // }
   };
 
   return (

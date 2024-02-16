@@ -6,8 +6,9 @@ import Register from '../screens/Register/Register';
 import ViewPeople from '../screens/Profile/ViewPeople';
 import People from '../screens/Profile/People';
 import { Provider } from 'react-redux';
-import { store } from '../redux/store';
+import { persistor, store } from '../redux/store';
 import { PaperProvider } from 'react-native-paper';
+import { PersistGate } from 'redux-persist/integration/react';
 
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +16,7 @@ const Stack = createNativeStackNavigator();
 const RootNavigator = () => {
   return (
     <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
     <PaperProvider>
     <NavigationContainer>
         <Stack.Navigator initialRouteName='People'>
@@ -24,6 +26,7 @@ const RootNavigator = () => {
       </Stack.Navigator>
     </NavigationContainer>
     </PaperProvider>
+    </PersistGate>
     </Provider>
   )
 }
