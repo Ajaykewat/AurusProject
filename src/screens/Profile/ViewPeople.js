@@ -19,7 +19,7 @@ const ViewPeople = ({navigation, route}) => {
 
 const selectoption = () => {
 
-  setmessage("Image upload not completed,  due to device image not able to save in app, i have to access the file manage and create a folder and add image in local device then access that image in app i dont think you need this majorly but it is here if you want to add any option in the future");
+  // setmessage("Image upload not completed,  due to device image not able to save in app, i have to access the file manage and create a folder and add image in local device then access that image in app i dont think you need this majorly but it is here if you want to add any option in the future");
 
   Alert.alert('', "Select Options", [
     {
